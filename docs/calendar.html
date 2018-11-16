@@ -1,0 +1,26 @@
+<table style="width:100%">
+    <tr>
+        <th>Title</th>
+        <th>Style</th>
+        <th>Start</th>
+        <th>End</th>
+        <th>Location</th>
+        <th>Dates</th>
+        <th>Price</th>
+        <th>VAT</th>
+        <th>Remaining Places</th>
+    </tr>
+    {{#events}}
+    <tr>
+        <td>{{ title }}</td>
+        <td>{{ learningMode }}</td>
+        <td>{{ start }}</td>
+        <td>{{ end }}</td>
+        <td>{{ location.name }}, {{ region.name }}</td>
+        <td>{{#sessions.edges}}{{ node.start }}, {{/sessions.edges}}</td>
+        <td>{{ defaultPrice.amount }} {{ defaultPrice.financialUnit.name }}</td>
+        <td>{{ defaultTaxType.effectiveRate }} ({{ defaultTaxType.name }})</td>
+        <td><a href="javascript:window.location=window.location.pathname + '?event={{ id }}#checkout'" class="button button__primary">{{ remainingPlaces }} left! ({{ interested }} interested & {{ reserved }} reserved)</a></td>
+    </tr>
+    {{/events}}
+</table>
