@@ -1,0 +1,20 @@
+service:
+  name: workerScript
+  config:
+    accountId: 5a883b414d4090a1442b20361f3c43a9
+    zoneId: b73780b3fc0505667907752bf2860823
+    workers:
+      theeventscompany:
+        routes:
+          - "*theevents.company/*"
+
+provider:
+  name: cloudflare
+
+plugins:
+- serverless-cloudflare-workers
+
+functions:
+  workerScript:
+    worker: theeventscompany
+    script: dist/main.js

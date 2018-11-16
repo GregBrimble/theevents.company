@@ -1,0 +1,11 @@
+{
+  "accountId": "5a883b414d4090a1442b20361f3c43a9",
+  "namespaceId": "0b2448c6f1bb4bd4a7113fc24c5f87db",
+  "administate": {
+    "apiKey": "",
+    "apiSecret": "",
+    "redirectUri": "",
+    "refreshToken": "",
+    "accessToken": ""
+  }
+}
