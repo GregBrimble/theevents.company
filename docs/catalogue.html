@@ -1,20 +1,24 @@
 {{#courseTemplates}}
 <div>
-<h4>{{ title }}</h4>
-<dl>
-    {{#customFieldValues}}
-    <dt>{{ label }}</dt>
-    <dd>{{ value }}</dd>
-    {{/customFieldValues}}
-</dl>
-<div class="right-align"><a href="javascript:window.location.href=window.location.pathname + '?course={{ id }}#calendar'" class="button button__primary">Find Dates</a></div>
-<style>
-    dt {
-        color: #111;
-    }
-    dd {
-        font-style: italic;
-    }
-</style>
+    <h4>{{ title }}</h4>
+    <p>{{{ lmsSummary }}</p>
+    <dl>
+        {{#customFieldValues}}
+        <dt>{{ label }}</dt>
+        <dd>{{{ value }}</dd>
+        {{/customFieldValues}}
+    </dl>
+    <div class="right-align"><a
+            href="javascript:window.location=window.location.pathname + '?course={{ code }}#calendar'"
+            class="button button__primary">Find Dates</a></div>
+    <style>
+        dt {
+            color: #111;
+        }
+
+        dd {
+            font-style: italic;
+        }
+    </style>
 </div>
 {{/courseTemplates}}
