@@ -19,8 +19,13 @@
         <td>{{ location.name }}, {{ region.name }}</td>
         <td>{{#sessions.edges}}{{ node.start }}, {{/sessions.edges}}</td>
         <td>{{ defaultPrice.amount }} {{ defaultPrice.financialUnit.name }}</td>
-        <td>{{ defaultTaxType.effectiveRate }} ({{ defaultTaxType.name }})</td>
-        <td><a href="javascript:window.location=window.location.pathname + '?event={{ id }}#checkout'" class="button button__primary">{{ remainingPlaces }} left! ({{ interested }} interested & {{ reserved }} reserved)</a></td>
+        <td>{{ defaultTaxType.effectiveRate }}% ({{ defaultTaxType.name }})</td>
+        <td><a href="javascript:window.location=window.location.pathname + '?event={{ id }}#checkout'"
+               class="button button__primary">{{#remainingPlaces}}{{ remainingPlaces }} left! ({{ interested }} interested & {{ reserved }}
+            reserved){{/remainingPlaces}}{{^remainingPlaces}}Book Now!{{/remainingPlaces}}</a></td>
     </tr>
     {{/events}}
 </table>
+{{^events}}
+<p>No Events found!</p>
+{{/events}}
