@@ -1,26 +1,22 @@
-import Mustache from 'mustache';
-import axios from 'axios';
+import {calendar, catalogue, debug, fetchCourseCodeFromButton, renderPage} from './utils';
+import {checkIfAccessTokenIsValid, generateNewAccessToken} from './oauth';
 
 export default async function handleCoursesRequest(request) {
-    const resp = await fetch(request);
-    const text = await resp.text();
 
-    const apiKey = await DATABASE.get('apiKey');
-    const apiSecret = await DATABASE.get('apiSecret');
-    const redirectUri = await DATABASE.get('redirectUri');
-    const accessToken = await DATABASE.get('accessToken');
-    const refreshToken = await DATABASE.get('refreshToken');
+    // Fetch values from database
+    let apiKey = await DATABASE.get('apiKey');
+    let apiSecret = await DATABASE.get('apiSecret');
+    let redirectUri = await DATABASE.get('redirectUri');
+    let accessToken = await DATABASE.get('accessToken');
+    let refreshToken = await DATABASE.get('refreshToken');
 
-    var view = {
+    const view = {
         catalogue: 'Catalogue here!',
         calendar: 'Calendar here!',
         checkout: 'Checkout here!',
-        lms: 'LMS Access here!'
+        lms: 'LMS Access here!',
+        debug: await debug('Debug here!')
     };
 
-    return new Response(Mustache.render(text, view), {
-        headers: {
-            'Content-Type': 'text/html'
-        }
-    });
+    return await renderPage(request, view);
 }

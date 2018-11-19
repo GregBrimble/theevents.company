@@ -1,5 +1,5 @@
 import handleCoursesRequest from './courses';
-import handleCourses2Request from './courses';
+import handleCoursesCompletedRequest from './courses_completed';
 
 async function handleNormalRequest(request) {
     return await fetch(request);
@@ -13,7 +13,7 @@ addEventListener('fetch', event => {
             event.respondWith(handleCoursesRequest(request));
             break;
         case '/courses2.html':
-            event.respondWith(handleCourses2Request(request));
+            event.respondWith(handleCoursesCompletedRequest(request));
             break;
         default:
             event.respondWith(handleNormalRequest(request));
